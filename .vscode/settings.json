@@ -1,0 +1,18 @@
+{
+  "editor.formatOnSave": true, // 保存时自动格式化
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // 为 Vue 文件指定 Prettier 格式化器
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // 为 TypeScript 文件指定 Prettier 格式化器
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // 为 JavaScript 文件指定 Prettier 格式化器
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
