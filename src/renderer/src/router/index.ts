@@ -16,6 +16,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/setting',
     name: 'setting',
     component: () => import('../views/Setting.vue') // 软路由加载（懒加载）
+  },
+  {
+    path: '/Login',
+    name: 'Login',
+    component: () => import('../views/Login.vue') // 软路由加载（懒加载）
   }
 ]
 

@@ -1,85 +1,76 @@
-# text-edit
+# **智能文本渲染桌面应用 - 项目文档**
 
-An Electron application with Vue and TypeScript
+## **1. 项目概述**
+### 1.1 项目名称
+智能文本渲染桌面应用（Smart Text Renderer Desktop）
 
-## Recommended IDE Setup
+### 1.2 项目简介
+基于 **Electron + Vite + Vue 3** 开发的跨平台桌面应用，支持多种文本格式渲染（HTML、LaTeX、Markdown、Mermaid），并具备云端同步、协同编辑等高级功能。
 
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+### 1.3 技术栈
+- **前端框架**: Vue 3 + TypeScript + Pinia
+- **构建工具**: Vite
+- **桌面框架**: Electron
+- **文本渲染**:
+  - Markdown: `marked` + `highlight.js`
+  - LaTeX: `MathJax` / `KaTeX`
+  - 图表: `mermaid`
+- **后端**: Node.js + Express + MongoDB / MySQL 
+- **云服务**: 阿里云/腾讯云（可选）
 
-## Project Setup
+---
 
-### Install
+## **2. 功能模块**
+### 2.1 已完成功能
+#### 文本渲染引擎
+- ✅ HTML 原生渲染
+- ✅ LaTeX 数学公式渲染
+- ✅ Markdown 渲染（支持 LaTeX 嵌入）
+- ✅ Mermaid 图表渲染（流程图、时序图等）
 
-```bash
-$ pnpm install
+### 2.2 待开发功能（TODO）
+#### 前端部分
+- 🔧 **LaTeX 渲染优化**
+  - 修复公式嵌套渲染问题
+  - 增加公式预览快捷面板
+- 🔧 **Markdown 渲染增强**
+  - 自定义 CSS 主题支持
+  - 代码块行号显示
+- 🔧 **设置页面**
+  - 编辑器主题切换（暗色/亮色）
+  - 字体大小/家族设置
+  - 自动保存配置
+
+#### 后端部分
+- 🚀 **用户系统**
+  - 邮箱/手机号注册 & 登录
+  - JWT 令牌认证
+  - 第三方登录（GitHub/微信）
+- 🚀 **文档云服务**
+  - 云端自动备份
+  - 版本历史管理
+  - 跨设备同步
+- 🚀 **协同编辑**
+  - WebSocket 实时协作
+  - 光标位置共享
+  - 修改痕迹追踪
+- 🚀 **团队功能**
+  - 团队空间管理
+  - 成员权限控制（所有者/编辑者/查看者）
+
+---
+
+## **3. 项目架构**
 ```
-
-### Development
-
-```bash
-$ pnpm dev
-```
-
-### Build
-
-```bash
-# For windows
-$ pnpm build:win
-
-# For macOS
-$ pnpm build:mac
-
-# For Linux
-$ pnpm build:linux
-```
-
-```
-text-edit
+inforender
+├─ .continue
+│  └─ assistants
+│     └─ new-assistant.yaml
 ├─ .editorconfig
 ├─ .npmrc
 ├─ .prettierignore
 ├─ .prettierrc.yaml
-├─ build
-│  ├─ entitlements.mac.plist
-│  ├─ icon.icns
-│  ├─ icon.ico
-│  └─ icon.png
-├─ dev-app-update.yml
-├─ electron-builder.yml
-├─ electron.vite.config.ts
-├─ eslint.config.mjs
-├─ package.json
-├─ pnpm-lock.yaml
 ├─ README.md
-├─ resources
-│  └─ icon.png
-├─ src
-│  ├─ main
-│  │  └─ index.ts
-│  ├─ preload
-│  │  ├─ index.d.ts
-│  │  └─ index.ts
-│  └─ renderer
-│     ├─ index.html
-│     └─ src
-│        ├─ App.vue
-│        ├─ assets
-│        ├─ components
-│        │  └─ Versions.vue
-│        ├─ env.d.ts
-│        └─ main.ts
-├─ tsconfig.json
-├─ tsconfig.node.json
-└─ tsconfig.web.json
-
-```
-
-```
-text-edit
-├─ .editorconfig
-├─ .npmrc
-├─ .prettierignore
-├─ .prettierrc.yaml
 ├─ build
 │  ├─ entitlements.mac.plist
 │  ├─ icon.icns
@@ -90,14 +81,20 @@ text-edit
 ├─ electron.vite.config.ts
 ├─ eslint.config.mjs
 ├─ fast-init-vue.sh
+├─ fileIndex.json
 ├─ package.json
 ├─ pnpm-lock.yaml
-├─ README.md
+├─ reddit.md
 ├─ resources
 │  └─ icon.png
 ├─ src
 │  ├─ main
-│  │  └─ index.ts
+│  │  ├─ Libs
+│  │  │  ├─ File.ts
+│  │  │  └─ Libs.ts
+│  │  ├─ index.ts
+│  │  ├─ ipc.ts
+│  │  └─ windows.ts
 │  ├─ preload
 │  │  ├─ index.d.ts
 │  │  └─ index.ts
@@ -107,18 +104,93 @@ text-edit
 │     ├─ index.html
 │     └─ src
 │        ├─ App.vue
+│        ├─ Libs
+│        │  ├─ Lib.ts
+│        │  ├─ ipc.ts
+│        │  ├─ render-Graphtd.ts
+│        │  ├─ render-else.ts
+│        │  ├─ render-letax.ts
+│        │  └─ render-markdown.ts
 │        ├─ assets
+│        │  └─ view
+│        │     ├─ Mainpart.css
+│        │     └─ setting.css
 │        ├─ components
-│        │  ├─ TopGuide.vue
-│        │  └─ Versions.vue
+│        │  ├─ LeftGuide.vue
+│        │  └─ TopGuide.vue
 │        ├─ env.d.ts
 │        ├─ main.ts
 │        ├─ store
-│        │  ├─ exampleStore.ts
+│        │  ├─ Account.ts
 │        │  └─ index.ts
 │        └─ views
+│           ├─ Login.vue
+│           ├─ MainPart.vue
+│           └─ Setting.vue
 ├─ tsconfig.json
 ├─ tsconfig.node.json
 └─ tsconfig.web.json
 
 ```
+
+---
+
+## **4. 开发计划**
+### Phase 1 ：基础优化
+- [ ] 修复 LaTeX 渲染已知问题
+- [ ] 实现设置页面 UI
+- [ ] 连接后端登录/注册接口
+
+### Phase 2 ：云功能开发
+- [ ] 实现文档云备份/恢复
+- [ ] 开发基础协同编辑（文本同步）
+- [ ] 用户管理系统
+
+### Phase 3 ：高级功能
+- [ ] 完善协同编辑（光标共享、历史版本）
+- [ ] 团队空间管理
+- [ ] 性能优化与测试
+
+---
+
+## **5. 创新亮点**
+1. **多格式统一渲染** - 在 Markdown 中无缝混合 LaTeX 公式和 Mermaid 图表
+2. **实时协同编辑** - 类 Google Docs 的多人协作体验
+3. **智能云备份** - 自动版本管理，支持任意时间点恢复
+4. **跨平台支持** - 基于 Electron 的 Windows/macOS/Linux 客户端
+
+---
+
+## **6. 比赛展示建议**
+### 6.1 演示重点
+1. 展示从纯文本到复杂技术文档的渲染效果
+2. 演示多人同时编辑同一文档的实时协作
+3. 展示云端同步和版本恢复功能
+
+### 6.2 技术难点解决方案
+- **LaTeX 渲染性能**: 使用 KaTeX 或者 MathJax 提升速度
+- **协同冲突解决**: 使用 Operational Transformation 算法
+- **大文件处理**: 实现增量同步和懒加载
+
+---
+
+## **7. 部署方案**
+### 开发环境
+```bash
+# 前端开发
+# 本项目基于pnpm构建，建议优先使用pnpm
+npm run dev
+
+# 后端开发  
+npm run server
+
+# 桌面应用
+npm run electron
+```
+
+### 生产环境
+- 前端：Vite 构建 + Electron 打包
+- 后端：Docker 容器化部署
+- 数据库：云数据库 MongoDB Atlas
+
+
