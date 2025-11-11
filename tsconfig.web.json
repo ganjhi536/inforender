@@ -7,12 +7,22 @@
     "src/preload/*.d.ts"
   ],
   "compilerOptions": {
+    "moduleResolution": "bundler",
     "composite": true,
     "baseUrl": ".",
     "paths": {
       "@renderer/*": [
         "src/renderer/src/*"
-      ]
+      ],
+      "@view": [
+        "src/renderer/src/views/*"
+      ],
+      "@libs": [
+        "src/renderer/src/Libs/*"
+      ],
+      "@store": [
+        "src/renderer/src/store/*"
+      ],
     }
   },
   "vueCompilerOptions": {

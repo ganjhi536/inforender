@@ -245,4 +245,4 @@ watchEffect(() => {
 })
 </script>
 
-<style scoped src="../assets/view/setting.css"></style>
+<style scoped src="@view/style/setting.css"></style>
