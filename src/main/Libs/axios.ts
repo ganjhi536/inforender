@@ -122,9 +122,9 @@ export const createCancelToken = () => {
 import axios from 'axios'
 
 const axiosCostume = axios.create({
-    baseURL: '后端地址',
-    timeout: 5000,
+  baseURL: '后端地址',
+  timeout: 5000
 })
 export const axPost = () => {
-    //
+  //
 }

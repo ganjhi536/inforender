@@ -62,7 +62,17 @@ export const renderLatexFormulas = (content: string): string => {
       return match
     }
 
-    return renderMathFormula(formula, isBlock)
+    // 渲染公式
+    const renderedFormula = renderMathFormula(formula, isBlock)
+
+    // 提取 math 标签部分，移除 span 渲染内容
+    const mathMatch = renderedFormula.match(/<math[\s\S]*?<\/math>/)
+    if (mathMatch) {
+      return mathMatch[0]
+    }
+
+    // 如果没有找到 math 标签，返回原始渲染结果
+    return renderedFormula
   }
 
   // 按特定顺序渲染各种类型的公式（从最具体到最一般）
@@ -88,7 +98,7 @@ export const renderLatexFormulas = (content: string): string => {
   processedContent = processedContent.replace(/\$([^$]+?)\$/g, (match: string, formula: string) =>
     processFormula(match, formula, false)
   )
-
+  console.log(processedContent)
   return processedContent
 }
 

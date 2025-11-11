@@ -14,5 +14,8 @@
         "src/renderer/src/*"
       ]
     }
+  },
+  "vueCompilerOptions": {
+    "globalTypesPath": "./.vue-global-types/global.d.ts"
   }
 }

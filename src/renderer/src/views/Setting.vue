@@ -185,79 +185,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useSettingStore } from '../store/index'
 
-// 设置项数据结构
-interface Settings {
-  startupOptions: {
-    autoStart: boolean
-  }
-  language: {
-    selected: string
-    options: Array<{ value: string; label: string }>
-  }
-  update: {
-    autoCheck: boolean
-    source: string
-    sources: Array<{ value: string; label: string }>
-  }
-  appearance: {
-    theme: string
-    themes: Array<{ value: string; label: string }>
-  }
-  editor: {
-    autoSave: boolean
-    saveInterval: number
-  }
-  experimental: {
-    features: Array<{
-      name: string
-      description: string
-      enabled: boolean
-    }>
-  }
-}
-
+// 使用设置存储
+const settings = useSettingStore().settings
 // 响应式设置数据
-const settings = reactive<Settings>({
-  startupOptions: {
-    autoStart: false
-  },
-  language: {
-    selected: 'zh-CN',
-    options: [
-      { value: 'zh-CN', label: '中文' },
-      { value: 'ENG', label: 'ENGLISH(disabled)' }
-    ]
-  },
-  update: {
-    autoCheck: true,
-    source: 'github',
-    sources: [{ value: 'github', label: 'GitHub' }]
-  },
-  appearance: {
-    theme: 'dark',
-    themes: [{ value: 'dark', label: '暗色' }]
-  },
-  editor: {
-    autoSave: false,
-    saveInterval: 30
-  },
-  experimental: {
-    features: [
-      {
-        name: '高级渲染引擎(disabled)',
-        description: '使用实验性的渲染引擎提高性能',
-        enabled: false
-      },
-      {
-        name: '实时协作(disabled)',
-        description: '启用实验性的实时协作功能',
-        enabled: false
-      }
-    ]
-  }
-})
 
 // 实验性功能区域展开状态
 const experimentalExpanded = ref(false)

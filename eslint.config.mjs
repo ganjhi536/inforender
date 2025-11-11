@@ -42,7 +42,8 @@ export default tseslint.config(
             lang: 'ts' // 要求 <script> 标签使用 TypeScript
           }
         }
-      ]
+      ],
+      '@typescript-eslint/no-explicit-any': 'off' // 允许使用 any 类型
     }
   },
 

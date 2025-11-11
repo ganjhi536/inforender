@@ -5,4 +5,6 @@ const pinia = createPinia()
 export default pinia
 
 // 注册所有 store 模块
+// 此处作为所有 store 模块出口
 export * from './Account'
+export * from './Setting'

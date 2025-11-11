@@ -1,0 +1,34 @@
+<!--生产环境下不应当包含此vue！-->
+
+<template>
+  行内公式使用美元符号表示，例如：<span class="katex"
+    ><span class="katex-mathml"></span
+    ><span class="katex-html" aria-hidden="true"
+      ><span class="base"
+        ><span class="strut" style="height: 0.6833em"></span
+        ><span class="mord mathnormal" style="margin-right: 0.05764em">E</span
+        ><span class="mspace" style="margin-right: 0.2778em"></span><span class="mrel">=</span
+        ><span class="mspace" style="margin-right: 0.2778em"></span></span
+      ><span class="base"
+        ><span class="strut" style="height: 0.8141em"></span><span class="mord mathnormal">m</span
+        ><span class="mord"
+          ><span class="mord mathnormal">c</span
+          ><span class="msupsub"
+            ><span class="vlist-t"
+              ><span class="vlist-r"
+                ><span class="vlist" style="height: 0.8141em"
+                  ><span style="top: -3.063em; margin-right: 0.05em"
+                    ><span class="pstrut" style="height: 2.7em"></span
+                    ><span class="sizing reset-size6 size3 mtight"
+                      ><span class="mord mtight">2</span></span
+                    ></span
+                  ></span
+                ></span
+              ></span
+            ></span
+          ></span
+        ></span
+      ></span
+    ></span
+  >
+</template>
